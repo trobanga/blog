@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<base href="/" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Perseus Example – Tiny</title>
+    <script>window.__PERSEUS_RENDER_CFG = '{"index":"index"}';</script>
+<script type="module">
+    import init, { run } from "/.perseus/bundle.js";
+    async function main() {
+        await init("/.perseus/bundle.wasm");
+        run();
+    }
+    main();
+</script>
+<!--PERSEUS_INTERPOLATED_HEAD_BEGINS--><!---->
+<script>window.__PERSEUS_INITIAL_STATE = `None`;</script>
+</head>
+    <body>
+        <div id="root"><div id="__perseus_content_initial" class="__perseus_content"><p data-hk="1.0">Hello World!</p></div></div>
+    </body>
+</html>

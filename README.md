@@ -30,8 +30,9 @@ Die Grundidee ist den Blog komplett in Rust zu betreiben und regelmäßig mit Ar
 # Erste Schritte
 - [x] Das Blogprojekt auf [Github](https://github.com/trobanga/blog) der Liste der verwaisten und vergessenen Projekte hinzufügen.
 - [x] Einen passenden Markdown -> HTML Konverter finden
-- [ ] Auf [uberspace](https://uberspace.de) anmelden
-- [ ] Erste Seite veröffentlichen
+- [x] Auf [uberspace](https://uberspace.de) anmelden
+- [x] Erste Seite veröffentlichen
+- [ ] Namen und Domain finden
 - [ ] _Werbung_ auf Discord, Reddit, und so schalten^^
 
 ## Markdown -> HTML Konverter
@@ -50,7 +51,7 @@ cargo add comrak
 ```
 
 Hier ist mein minimaler Code, der die README.md nach HTML übersetzt.
-``` rust
+```rust
 use std::{fs::File, io::Read, io::Write};
 
 use comrak::{format_html, parse_document, Arena, ComrakOptions};
@@ -72,3 +73,15 @@ fn main() {
     out.write_all(b"</body>\n<html>\n").unwrap();
 }
 ```
+
+Ok, es hängt gerade etwas an der Namensfindung, deshalb mache ich erstmal mit der Blogstruktur weiter.
+
+## Web-Framework
+Blogs gibt es ja schon seit einer ganzen Weile und dementsprechend gibt es bereits diverse Frameworks dafür. 
+[Zola](https://www.getzola.org/) ist ein Static Site Generator, der im Prinzip genau das macht was ich gerne hätte, aber der bringt mir einerseits zuviel Komplexität und gibt mir andererseits zu wenig Kontrolle über das was ich mache.
+Außerdem wäre das ein bisschen zu einfach^^
+
+Ich schwanke gerade zwischen den zwei Möglichkeiten ein einfaches Templatesystem zu schreiben oder schon etwas fertiges zu nehmen.
+[Perseus](https://arctic-hen7.github.io/perseus/en-US/) gefällt mir ganz gut, ich bin mir nur noch nicht ganz sicher, ob das auch statische Seiten generieren kann.
+In deren README steht, dass sie das unterstützen, aber ich habe noch nicht herausgefunden wie.
+
