@@ -2,6 +2,19 @@ use std::{fs::File, io::Read, io::Write};
 
 use comrak::{format_html, parse_document, Arena, ComrakOptions};
 
+#[no_mangle]
+pub fn template_file() {
+    println!("Content-Type: text/html\n");
+
+    let data = get_parameters();
+
+    let mut reg = Handlebars::new();
+    let template_path = format!("{}/template.hbs", std::env::var("TEMPLATE_PATH").unwrap());
+    reg.register_template_file("template", template_path)
+        .unwrap();
+    println!("{}", reg.render("template", &json!(data)).unwrap());
+}
+
 fn main() {
     let mut f = File::open("README.md").unwrap();
     let mut md = String::new();
