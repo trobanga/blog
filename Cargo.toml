@@ -6,5 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+alphanumeric-sort = "1.4.4"
 comrak = "0.12.1"
+glob = "0.3.0"
 handlebars = "4.2.2"

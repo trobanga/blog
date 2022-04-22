@@ -18,7 +18,7 @@ Ihr glaubt gar nicht wie wenig Lust ich dazu habe...aber gut.
 Oben ein Menü, darunter Content.
 
 Das Menü soll die verschiedenen Artikelreihen enthalten, d.h. zuerst wird es nur einen Eintrag namens Blogbau geben und dann vielleicht noch eine Wilkommens-/Infoseite.
-Das Menü soll dabei automatisch durch den Content erzeugt werden.
+Insbesondere soll das Menü dabei automatisch durch den Content erzeugt werden.
 Dazu werde ich einen Ordner content anlegen und jeder Unterordner steht für eine Artikelreihe.
 In den Unterordnern liegen dann einzelne Markdowndateien, die die einzelnen Artikel enthalten.
 Oder noch besser, jeder Artikel ist in einem weiteren Unterordner, das macht die Organisation einfacher, wenn noch Bilder etc. dazukommen.
@@ -27,8 +27,19 @@ Oder noch besser, jeder Artikel ist in einem weiteren Unterordner, das macht die
 mkdir -p content/blogbau/{1,2}
 ```
 
-Unter das Hauptmenü kommt noch ein Untermenü mit den Artikeln der gerade ausgewählten Reihe.
+Als erstes werden alle Projekte in content gelesen.
+```rust
+const CONTENT_DIR: &str = "./content";
 
-Das klingt doch so als könnte handlebars dafür ganz brauchbar sein.
-
-
+fn main() -> io::Result<()> {
+    for dir in std::fs::read_dir("./content")? {
+        dbg!(dir?);
+    }
+    Ok(())
+}
+```
+```stdout
+[src/main.rs:13] dir? = DirEntry(
+    "./content/blogbau",
+)
+```
